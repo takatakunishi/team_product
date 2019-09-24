@@ -8,5 +8,22 @@
     <div id="tool">
       contents
     </div>
+    <script type="text/javascript">
+    let field = new Map(); //Mapの作成
+    let mine = new Map(); //Mapの作成
+
+    for(var i = 0; i < 64; i++){
+      field.set(i , true); //falseが爆弾
+      mine.set(i, 0); //iは位置０は周囲に存在する爆弾の個数
+    } //Mapを設定
+
+    var random_number = Math.floor(Math.random(field.size)); //0~63までの乱数決定 
+
+    for(var i = 0; i < field.size; i++){
+      if(i == random_number){
+        field.set(i, false); //爆弾設置
+      }
+    }
+    </script>
   </body>
 </html>
