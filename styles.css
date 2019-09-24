@@ -1,6 +1,6 @@
 .container{
-  width: 500px;
-  height: 500px;
+  width: 700px;
+  height: 700px;
 }
 
 #tool{
@@ -9,11 +9,9 @@
   flex-wrap: wrap;
 }
 
-
-
 .box{
-  height: 50%;
-  width: 50%;
+  height: 12.5%;
+  width: 12.5%;
   background: red;
   border: 1px solid black;
   box-sizing: border-box;
