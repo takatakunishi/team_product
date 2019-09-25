@@ -1,0 +1,23 @@
+.container{
+  width: 700px;
+  height: 700px;
+}
+
+#tool{
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.box{
+  height: 12.5%;
+  width: 12.5%;
+  background: red;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+
+
+.safe{
+  background: green;
+}
