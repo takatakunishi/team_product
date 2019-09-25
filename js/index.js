@@ -1,6 +1,7 @@
 (() => {
   let firstCheck = true;
   let Plase = 0;
+  let boxNumber = 64;
   /** 重複チェック用配列 */
   var randoms = [];
 
@@ -35,6 +36,10 @@
         }
       }
       this.classList.add('safe');
+      boxNumber--;
+      if(mine_number == boxNumber){
+        /*ゲームクリアの処理*/ 
+      }
     };
     const box = tool.appendChild(div);
     box.classList.add('box');
