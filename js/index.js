@@ -1,24 +1,43 @@
 (() => {
+  let firstCheck = true;
+  let firstPlase = 0;
+  /** 重複チェック用配列 */
+  var randoms = [];
+
+  /** 最小値と最大値 */
+  var min = 0, max = 63;
+
   const tool = document.getElementById('tool');
   for(var cnum = 0; cnum<64; cnum++){
     const div = document.createElement('div');
     const idname = cnum;
     div.onclick = function(){
+      if(firstCheck){
+        firstCheck=false;
+        firstPlace=this.id;
+        console.log(firstPlace);
+
+        /** 重複チェックしながら乱数作成 */
+        for(i = 0; i < mine_number; i++){
+          while(true){
+            var tmp = intRandom(min, max);
+            if(!randoms.includes(tmp) && tmp != firstPlace){
+              randoms.push(tmp);
+              break;
+            }
+          }
+        }
+      }
       this.classList.add('safe');
     };
     const box = tool.appendChild(div);
     box.classList.add('box');
     box.setAttribute("id",idname);
-    if (cnum===23) {
-      box.classList.add('safe');
-    }
   }
 
 
 
-
-
-    let first_place; //最初の位置(未定)
+    
     let mine_number = 10; //爆弾の個数
     let field = new Map(); //Mapの作成
     let mine = new Map(); //Mapの作成
@@ -28,22 +47,7 @@
       mine.set(i, 0); //iは位置０は周囲に存在する爆弾の個数
     } //Mapを設定
 
-    /** 重複チェック用配列 */
-    var randoms = [];
 
-    /** 最小値と最大値 */
-    var min = 0, max = 63;
-
-    /** 重複チェックしながら乱数作成 */
-    for(i = 0; i < mine_number; i++){
-      while(true){
-        var tmp = intRandom(min, max);
-        if(!randoms.includes(tmp) && tmp != first_place){
-          randoms.push(tmp);
-          break;
-        }
-      }
-    }
 
     /** min以上max以下の整数値の乱数を返す */
     function intRandom(min, max){
