@@ -1,6 +1,6 @@
 (() => {
   let firstCheck = true;
-  let firstPlase = 0;
+  let Plase = 0;
   /** 重複チェック用配列 */
   var randoms = [];
 
@@ -12,20 +12,26 @@
     const div = document.createElement('div');
     const idname = cnum;
     div.onclick = function(){
+      Place=this.id;
       if(firstCheck){
         firstCheck=false;
-        firstPlace=this.id;
-        console.log(firstPlace);
+        console.log(Place);
 
         /** 重複チェックしながら乱数作成 */
         for(i = 0; i < mine_number; i++){
           while(true){
             var tmp = intRandom(min, max);
-            if(!randoms.includes(tmp) && tmp != firstPlace){
+            if(!randoms.includes(tmp) && tmp != Place){
               randoms.push(tmp);
               break;
             }
           }
+        }
+      }else{
+        if(field.get(Place)){
+          mine_check(Place);
+        }else{
+          /*ゲームオーバーの処理*/
         }
       }
       this.classList.add('safe');
@@ -35,7 +41,27 @@
     box.setAttribute("id",idname);
   }
 
-
+  function mine_check(p){
+    if(p >= 0){
+      if(mine.get(p) == 0){
+        /*周囲８マスをクリックしたことにしたい*/
+        mine_check(p-1);
+        mine_check(p-7);
+        mine_check(p-8);
+        mine_check(p-9);
+        mine_check(p+1);
+        mine_check(p+7);
+        mine_check(p+8);
+        mine_check(p+9);
+  
+        const box = document.getElementById(p);
+        box.classList.add('safe');
+      }else{
+        let squareNumber = mine.get(p);
+        /*マスに数字を表示する処理*/
+      }
+    }
+  }
 
     
     let mine_number = 10; //爆弾の個数
@@ -96,5 +122,4 @@
         }
       }
     }
-
 })();
