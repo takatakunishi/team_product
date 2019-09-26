@@ -88,45 +88,43 @@
       return Math.floor( Math.random() * (max - min + 1)) + min;
     }
 
-    for(var j = 0; j < randoms.length; j++){
-      for(var i = 0; i < field.size; i++){
-        if(i == randoms[i]){
-          field.set(i, false); //爆弾設置
-          mine.set(i, -1); //爆弾設置
+    for(var i = 0; i < 64; i++){
+      if(randoms.includes(i)){
+        field.set(i, false); //爆弾設置
+        mine.set(i, -1); //爆弾設置
 
-          /*ここから周囲の爆弾の個数の確認*/
-          if(i-1 >= 0 && field.get(i-1) == true){
-          var a = mine.get(i-1);
-          mine.set(i-1, a+1);
-          }
-          if(i-7 >= 0 && field.get(i-7) == true){
-            var a = mine.get(i-7);
-            mine.set(i-7, a+1);
-          }
-          if(i-8 >= 0 && field.get(i-8) == true){
-            var a = mine.get(i-8);
-            mine.set(i-8, a+1);
-          }
-          if(i-9 >= 0 && field.get(i-9) == true){
-            var a = mine.get(i-9);
-            mine.set(i-9, a+1);
-          }
-          if(i+1 < 64 && field.get(i+1) == true){
-            var a = mine.get(i+1);
-            mine.set(i+1, a+1);
-          }
-          if(i+7 < 64 && field.get(i+7) == true){
-            var a = mine.get(i+7);
-            mine.set(i+7, a+1);
-          }
-          if(i+8 < 64 && field.get(i+8) == true){
-            var a = mine.get(i+8);
-            mine.set(i+8, a+1);
-          }
-          if(i+9 < 64 && field.get(i+9) == true){
-            var a = mine.get(i+9);
-            mine.set(i+9, a+1);
-          }
+        /*ここから周囲の爆弾の個数の確認*/
+        if(i-1 >= 0 && field.get(i-1) == true){
+        var a = mine.get(i-1);
+        mine.set(i-1, a+1);
+        }
+        if(i-7 >= 0 && field.get(i-7) == true){
+          var a = mine.get(i-7);
+          mine.set(i-7, a+1);
+        }
+        if(i-8 >= 0 && field.get(i-8) == true){
+          var a = mine.get(i-8);
+          mine.set(i-8, a+1);
+        }
+        if(i-9 >= 0 && field.get(i-9) == true){
+          var a = mine.get(i-9);
+          mine.set(i-9, a+1);
+        }
+        if(i+1 < 64 && field.get(i+1) == true){
+          var a = mine.get(i+1);
+          mine.set(i+1, a+1);
+        }
+        if(i+7 < 64 && field.get(i+7) == true){
+          var a = mine.get(i+7);
+          mine.set(i+7, a+1);
+        }
+        if(i+8 < 64 && field.get(i+8) == true){
+          var a = mine.get(i+8);
+          mine.set(i+8, a+1);
+        }
+        if(i+9 < 64 && field.get(i+9) == true){
+          var a = mine.get(i+9);
+          mine.set(i+9, a+1);
         }
       }
     }
