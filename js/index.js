@@ -33,12 +33,15 @@
           mine_check(Place);
         }else{
           /*ゲームオーバーの処理*/
+          const loose = document.getElementById('loose');
+          loose.classList.add('loose');
+          console.log('game 0ver');
         }
       }
       this.classList.add('safe');
       boxNumber--;
       if(mine_number == boxNumber){
-        /*ゲームクリアの処理*/ 
+        /*ゲームクリアの処理*/
       }
     };
     const box = tool.appendChild(div);
@@ -58,7 +61,7 @@
         mine_check(p+7);
         mine_check(p+8);
         mine_check(p+9);
-  
+
         const box = document.getElementById(p);
         box.classList.add('safe');
       }else{
@@ -68,7 +71,7 @@
     }
   }
 
-    
+
     let mine_number = 10; //爆弾の個数
     let field = new Map(); //Mapの作成
     let mine = new Map(); //Mapの作成
