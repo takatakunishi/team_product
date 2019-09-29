@@ -2,7 +2,7 @@
   let firstCheck = true;
   let Place = 0;
   let boxNumber = 64;
-  let mine_number = 1; //爆弾の個数
+  let mine_number = 10; //爆弾の個数
   let p_array = [];
   let field = new Map(); //Mapの作成
   let mine = new Map(); //Mapの作成
@@ -56,6 +56,7 @@
         for(var i = 0; i < 64; i++){
           if(randoms.includes(i)){
             //for文で要素を格納する
+            field.set(i, f);
             for(var n = 0; n < 8; n++){
               for(var m = 0; m < 8; m++){
                 console.log('ok');
@@ -167,6 +168,10 @@
                 mine_check(p+7);
                 mine_check(p+8);
                 mine_check(p+9);
+              }else if(MINE[i][j] > 0){
+              const box = document.getElementById(p);
+                box.classList.add('safe');
+                let squareNumber = mine.get(p);
               }else{
                 console.log('stopping');
                 let squareNumber = mine.get(p);
